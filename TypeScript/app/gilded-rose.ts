@@ -14,36 +14,36 @@ export class GildedRose {
       }
 
       if (item.name == 'Aged Brie') {
-        item.quality = this.calculateItemQuality(item.quality, 1)
-
-        if (item.sellIn <= 0) {
-          item.quality = this.calculateItemQuality(item.quality, 1)
-        }
+        const adjustQuality = item.sellIn <= 0 ? 2 : 1
+        item.quality = this.calculateItemQuality(item.quality, adjustQuality)
       } else if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-        item.quality = this.calculateItemQuality(item.quality, 1)
-
-        if (item.sellIn < 11) {
-          item.quality = this.calculateItemQuality(item.quality, 1)
-        }
-        if (item.sellIn < 6) {
-          item.quality = this.calculateItemQuality(item.quality, 1)
-        }
-
         if (item.sellIn <= 0) {
           item.quality = 0
+        } else {
+          let adjustQuality = this.calculateBackStagePassesAdjustQuality(item);
+          item.quality = this.calculateItemQuality(item.quality, adjustQuality)
         }
       } else {
-        item.quality = this.calculateItemQuality(item.quality, -1)
-
-        if (item.sellIn <= 0) {
-          item.quality = this.calculateItemQuality(item.quality, -1)
-        }
+        const adjustQuality = item.sellIn <= 0 ? -2 : -1
+        item.quality = this.calculateItemQuality(item.quality, adjustQuality)
       }
 
       item.sellIn = item.sellIn - 1;
     }
 
     return this.items;
+  }
+
+  private calculateBackStagePassesAdjustQuality(item: Item) {
+    if (item.sellIn < 6) {
+      return 3
+    }
+
+    if (item.sellIn < 11) {
+      return 2
+    }
+
+    return 1
   }
 
   private calculateItemQuality(baseQuality: number, adjustQuality: number): number {
