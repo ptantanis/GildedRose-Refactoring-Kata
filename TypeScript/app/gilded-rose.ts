@@ -9,6 +9,10 @@ export class GildedRose {
 
   updateQuality() {
     for (const item of this.items) {
+      if (item.name == 'Sulfuras, Hand of Ragnaros') {
+        continue
+      }
+
       if (item.name == 'Aged Brie') {
         if (item.quality < 50) {
           item.quality = item.quality + 1
@@ -38,7 +42,6 @@ export class GildedRose {
         if (item.sellIn <= 0) {
           item.quality = 0
         }
-      } else if (item.name == 'Sulfuras, Hand of Ragnaros') {
       } else {
         if (item.quality > 0) {
           item.quality = item.quality - 1
@@ -51,9 +54,7 @@ export class GildedRose {
         }
       }
 
-      if (item.name != 'Sulfuras, Hand of Ragnaros') {
-        item.sellIn = item.sellIn - 1;
-      }
+      item.sellIn = item.sellIn - 1;
     }
 
     return this.items;
