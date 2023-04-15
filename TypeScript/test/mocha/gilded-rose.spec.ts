@@ -1,5 +1,7 @@
 import { expect } from 'chai';
-import { Item, GildedRose } from '@/gilded-rose';
+import { GildedRose } from '../../app/gilded-rose';
+import {Item} from '../../app/item/item';
+
 
 describe('Gilded Rose', () => {
   it('should foo', () => {
