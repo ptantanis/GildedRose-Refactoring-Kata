@@ -6,6 +6,6 @@ export class SulfurasItem extends Item {
     super('Sulfuras, Hand of Ragnaros',  0, 80);
   }
   updateQuality() {
-    // Do nothing
+    // "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
   }
 }
