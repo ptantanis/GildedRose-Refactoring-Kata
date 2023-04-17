@@ -1,6 +1,9 @@
 import {Item as ExternalItem} from '../external/item';
 
 
+const MAX_QUALITY = 50;
+const MIN_QUALITY = 0;
+
 export abstract class Item extends ExternalItem {
 
   constructor(name: string, sellIn: number, quality: number) {
@@ -15,12 +18,12 @@ export abstract class Item extends ExternalItem {
 
   protected calculateAdjustedQuality(adjustQuality: number): number {
     const newQuality = this.quality + adjustQuality
-    if (newQuality < 0) {
-      return 0
+    if (newQuality < MIN_QUALITY) {
+      return MIN_QUALITY
     }
 
-    if (newQuality > 50) {
-      return 50
+    if (newQuality > MAX_QUALITY) {
+      return MAX_QUALITY
     }
 
     return newQuality
