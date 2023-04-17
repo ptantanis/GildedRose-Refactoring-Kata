@@ -3,6 +3,7 @@ import {NormalItem} from '../app/item/normal-item';
 import {AgedBrieItem} from '../app/item/aged-brie-item';
 import {SulfurasItem} from '../app/item/sulfuras-item';
 import {BackstagePassItem} from '../app/item/backstage-pass-item';
+import {ConjuredItem} from '../app/item/conjured-item';
 
 const items = [
   new NormalItem("+5 Dexterity Vest", 10, 20), //
@@ -14,7 +15,7 @@ const items = [
   new BackstagePassItem('Backstage passes to a TAFKAL80ETC concert', 10, 49),
   new BackstagePassItem('Backstage passes to a TAFKAL80ETC concert', 5, 49),
   // this conjured item does not work properly yet
-  new NormalItem("Conjured Mana Cake", 3, 6)];
+  new ConjuredItem("Conjured Mana Cake", 3, 6)];
 
 
 const gildedRose = new GildedRose(items);
