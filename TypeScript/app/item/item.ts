@@ -9,6 +9,10 @@ export abstract class Item extends ExternalItem {
 
   abstract updateQuality(): void
 
+  protected updateSellIn(): void {
+    this.sellIn -= 1
+  }
+
   protected calculateAdjustedQuality(adjustQuality: number): number {
     const newQuality = this.quality + adjustQuality
     if (newQuality < 0) {

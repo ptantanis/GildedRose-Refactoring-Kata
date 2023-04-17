@@ -9,11 +9,12 @@ export class BackstagePassItem extends Item {
   updateQuality() {
     if (this.sellIn <= 0) {
       this.quality = 0
-      return
     } else {
       const adjustQuality = this.calculateBackStagePassesAdjustQuality();
       this.quality = this.calculateAdjustedQuality(adjustQuality)
     }
+
+    this.updateSellIn()
   }
 
   private calculateBackStagePassesAdjustQuality() {
